@@ -1,14 +1,23 @@
 "use client";
 
-import { useRouter } from "next/navigation"; // Import the useRouter hook
-import { v4 as uuidv4 } from 'uuid'; // Import uuid to generate unique IDs
+import { useRouter } from "next/navigation";
+
+// Function to generate a random alphanumeric string of a given length
+const generateShortId = (length = 5) => {
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let result = '';
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+  return result;
+};
 
 export default function Home() {
-  const router = useRouter(); // Initialize the router
+  const router = useRouter();
 
   const handleCreateRoom = () => {
-    const roomId = uuidv4(); // Generate a unique room ID
-    router.push(`/room/${roomId}`); // Navigate to the new room page with the unique ID
+    const roomId = generateShortId(); // Generate a short unique room ID
+    router.push(`/room/${roomId}`); // Navigate to the new room page
   };
 
   return (
@@ -16,24 +25,10 @@ export default function Home() {
       <h1 className="text-4xl font-bold text-center mb-4">Welcome To Colook.</h1>
       <button
         className="rounded-full border border-white bg-transparent text-white px-6 py-3 text-lg transition-transform duration-300 ease-in-out"
-        onClick={handleCreateRoom} // Call the function on click
+        onClick={handleCreateRoom}
       >
         Create Room
       </button>
-
-      <style jsx>{`
-        @keyframes shake {
-          0% { transform: translate(0); }
-          25% { transform: translate(-2px, 0); }
-          50% { transform: translate(2px, 0); }
-          75% { transform: translate(-2px, 0); }
-          100% { transform: translate(0); }
-        }
-
-        button:hover {
-          animation: shake 0.5s ease-in-out;
-        }
-      `}</style>
     </div>
   );
 }

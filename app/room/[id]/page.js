@@ -6,7 +6,7 @@ export default function Room({ params }) {
     return (
       <div className="flex items-center justify-center min-h-screen text-white font-[var(--font-geist-sans)]">
         <h1 className="text-4xl font-bold text-center">Room ID: {id}</h1>
-        {/* Additional room content goes here */}
+        {/* Additional room content can go here */}
       </div>
     );
   }
