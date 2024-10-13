@@ -1,3 +1,4 @@
+//project location : app/page.js
 import Image from "next/image";
 import LandingPage from "../pages/landingpage.js"
 

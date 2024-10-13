@@ -1,3 +1,4 @@
+//project location : pages/landingpage.js
 "use client";
 
 import { useRouter } from "next/navigation";
