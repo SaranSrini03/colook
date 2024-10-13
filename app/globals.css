@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=YourFontFamily&display=swap');
 
 :root {
   --background: #ffffff;
@@ -11,6 +12,7 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --font-geist-sans: 'YourFontFamily', sans-serif;
   }
 }
 
