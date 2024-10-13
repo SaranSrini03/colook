@@ -1,8 +1,8 @@
 // app/firebase.js
 import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
-
 // Use environment variables
+
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
@@ -12,6 +12,5 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
   databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
 };
-
 const app = initializeApp(firebaseConfig);
 export const db = getDatabase(app);

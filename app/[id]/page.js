@@ -1,18 +1,16 @@
 "use client";
-
 import { useState, useEffect, useRef } from "react";
-import { db } from "../../firebase"; // Adjust the import path based on your file structure
+import { db } from "../firebase"; // Adjust the import path.
 import { ref, push, onValue } from "firebase/database";
 
 export default function Room({ params }) {
-  const { id } = params; // Get the room ID from the URL
-  const [messages, setMessages] = useState([]); // Messages from Firebase
-  const [inputValue, setInputValue] = useState(""); // Input field value
-  const messageEndRef = useRef(null); // Scroll to latest message
+  const { id } = params; // Room ID from the URL.
+  const [messages, setMessages] = useState([]); // Messages from Firebase.
+  const [inputValue, setInputValue] = useState(""); // Input field value.
+  const messageEndRef = useRef(null); // For scrolling to the latest message.
+  const messagesRef = ref(db, `${id}/messages`); // Firebase room reference.
 
-  const messagesRef = ref(db, `rooms/${id}/messages`); // Firebase room ref
-
-  // Fetch messages from Firebase in real-time
+  // Fetch messages from Firebase in real-time.
   useEffect(() => {
     onValue(messagesRef, (snapshot) => {
       const data = snapshot.val();
@@ -21,12 +19,12 @@ export default function Room({ params }) {
     });
   }, [id]);
 
-  // Scroll to the latest message
+  // Scroll to the latest message when messages change.
   useEffect(() => {
     messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  // Send a new message to Firebase
+  // Send a new message to Firebase.
   const handleSendMessage = (e) => {
     e.preventDefault();
     if (inputValue.trim()) {
@@ -34,8 +32,8 @@ export default function Room({ params }) {
         text: inputValue,
         timestamp: new Date().toLocaleTimeString(),
       };
-      push(messagesRef, newMessage); // Add message to Firebase
-      setInputValue(""); // Clear input field
+      push(messagesRef, newMessage); // Add message to Firebase.
+      setInputValue(""); // Clear the input field.
     }
   };
 
@@ -44,7 +42,7 @@ export default function Room({ params }) {
       <h1 className="text-4xl font-bold mb-4">Room ID: {id}</h1>
 
       <div className="w-full max-w-md p-4 rounded-lg shadow-md">
-        {/* Messages list */}
+        {/* Messages List */}
         <div className="overflow-y-auto max-h-60 mb-4 hide-scrollbar">
           {messages.map((message, index) => (
             <div key={index} className="text-left mb-2">
@@ -57,7 +55,7 @@ export default function Room({ params }) {
           <div ref={messageEndRef} /> {/* Scroll anchor */}
         </div>
 
-        {/* Message input form */}
+        {/* Message Input Form */}
         <form onSubmit={handleSendMessage} className="flex">
           <input
             type="text"
@@ -75,14 +73,14 @@ export default function Room({ params }) {
         </form>
       </div>
 
-      {/* Add CSS for hiding scrollbar */}
+      {/* CSS to Hide Scrollbar */}
       <style jsx>{`
         .hide-scrollbar {
           scrollbar-width: none; /* Firefox */
           -ms-overflow-style: none; /* Internet Explorer and Edge */
         }
         .hide-scrollbar::-webkit-scrollbar {
-          display: none; /* Safari and Chrome */
+          display: none; /* Chrome, Safari, and Opera */
         }
       `}</style>
     </div>

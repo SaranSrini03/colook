@@ -18,7 +18,7 @@ export default function Home() {
 
   const handleCreateRoom = () => {
     const roomId = generateShortId(); // Generate a short unique room ID
-    router.push(`/room/${roomId}`); // Navigate to the new room page
+    router.push(`${roomId}`); // Navigate to the new room page
   };
 
   return (
