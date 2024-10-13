@@ -44,8 +44,8 @@ export default function Room({ params }) {
       <Navbar />
 
       {/* Room Content */}
-      <div className="flex flex-col items-center  justify-center min-h-screen font-mono">
-        <h1 className="text-4xl font-bold mb-4">You Joined Room: {id}</h1>
+      <div className="flex flex-col items-center justify-center min-h-screen font-mono px-4 sm:px-0">
+        <h1 className="text-3xl md:text-4xl font-bold mb-4 text-center">You Joined Room: {id}</h1>
 
         <div className="w-full max-w-md p-4 rounded-lg shadow-md">
           {/* Messages List */}
