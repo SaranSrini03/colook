@@ -41,7 +41,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen text-white font-mono px-4">
-      <h1 className="text-3xl md:text-4xl font-bold text-center mb-4">Welcome To Colook.</h1>
+      <h1 className="text-3xl md:text-4xl font-bold text-center mb-4">Welcome To Whis.</h1>
       <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-4">
         <button
           className="rounded-full border border-white bg-transparent text-white px-6 py-3 text-lg transition-transform duration-300 ease-in-out w-full sm:w-auto"
